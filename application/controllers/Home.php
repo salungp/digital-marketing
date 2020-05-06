@@ -3,7 +3,6 @@
 	public function __construct()
 	{
 		parent::__construct();
-		mkdir('./assets/data/content/');
 	}
 
 	public function index()
