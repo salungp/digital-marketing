@@ -28,6 +28,7 @@
 		$promo = $this->db->get_where('content', ['title' => 'promo'])->result_array();
 		$fasilitas = $this->db->get_where('content', ['title' => 'fasilitas'])->row_array();
 		$footer = $this->db->get_where('content', ['title' => 'footer'])->row_array();
+		$menu = $this->db->get_where('content', ['title' => 'menu'])->result_array();
 
 		$data = [
 			'armada' => $armada,
@@ -47,7 +48,7 @@
 			'footer' => $footer,
 		];
 
-		$this->load->view('home_templates/header', ['title' => $banner['text'], 'tentang' => $tentang, 'nomor_wa' => $nomor_wa]);
+		$this->load->view('home_templates/header', ['title' => $banner['text'], 'tentang' => $tentang, 'nomor_wa' => $nomor_wa, 'menu' => $menu]);
 		$this->load->view('home/index', $data);
 		$this->load->view('home_templates/footer');
 	}

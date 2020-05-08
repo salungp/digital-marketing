@@ -28,6 +28,8 @@
 
     <li><a href="<?php echo base_url('pricing'); ?>"><i class="fa fa-money"></i> <span>Pricing list</span></a></li>
 
+    <li><a href="<?php echo base_url('menu'); ?>"><i class="fa fa-table"></i> <span>Menu list</span></a></li>
+
     <li><a href="<?php echo base_url('promo'); ?>"><i class="fa fa-book"></i> <span>Promo</span></a></li>
 
     <li><a href="<?php echo base_url('setting'); ?>"><i class="fa fa-cog"></i> <span>Setting</span></a></li>

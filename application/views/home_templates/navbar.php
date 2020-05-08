@@ -8,10 +8,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link active" href="#home">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#armada">Armada Kami</a>
-        <a class="nav-item nav-link" href="#layanan">Layanan</a>
-        <a class="nav-item nav-link" href="#kontak">Kontak Kami</a>
+        <?php foreach ($menu as $k) : ?>
+        <a class="nav-item nav-link active" href="<?php echo $k['parent']; ?>"><?php echo $k['text']; ?></a>
+        <?php endforeach; ?>
         <a class="nav-item btn btn-success" href="https://api.whatsapp.com/send?phone=<?php echo $nomor_wa['text']; ?>&text=Halo%20Saya%20mau%20tanya..."><i class="fa fa-comment"></i> Chat via WA</a>
         <a class="nav-item btn btn-primary" href="tel:+<?php echo $nomor_wa['text']; ?>"><i class="fa fa-phone"></i> Via telepon</a>
       </div>
