@@ -40,8 +40,13 @@ $table = [
           </div> 
 
           <div class="form-group">
-            <label for="image">Gambar content . optional</label>
-            <input type="file" name="image" id="image" class="form-control">
+            <label for="image">Media content</label>
+            <select class="form-control" id="media-create" required>
+              <option value="">-pilih-</option>
+              <option value="link">Link</option>
+              <option value="upload">Upload</option>
+            </select>
+            <div style="margin-top: 15px;"></div>
           </div> 
 
         </div>
@@ -67,10 +72,10 @@ $table = [
 
 <thead>
   <tr>
-    <th style="width: 10px">No</th>
-    <th>Aksi</th>
+    <th style="width: 10px;">No</th>
+    <th style="width: 80px;">Aksi</th>
     <th>Judul</th>
-    <th>Isi</th>
+    <th style="width: 400px;">Isi</th>
     <th>Parent</th>
     <th>Gambar</th>
   </tr>
@@ -79,50 +84,6 @@ $table = [
 <tbody>
   <?php $no = 1; ?>
   <?php foreach($content as $key) : ?>
-
-  <!-- modal edit -->
-  <div class="modal fade" id="modal-edit-<?php echo $key['id']; ?>">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Edit content</h4>
-        </div>
-        <div class="modal-body">
-          <form action="<?php echo base_url('content/update/'.$key['id']); ?>" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="title">Judul content</label>
-              <input type="text" name="title" id="title" class="form-control" placeholder="Masukkan judul" value="<?php echo $key['title']; ?>" required>
-            </div> 
-
-            <div class="form-group">
-              <label for="text">Isi content</label>
-              <textarea name="text" id="text" class="form-control" placeholder="Masukkan isi content" required><?php echo $key['text']; ?></textarea>
-            </div> 
-
-            <div class="form-group">
-              <label for="parent">Parent content . optional</label>
-              <input type="text" name="parent" id="parent" class="form-control" value="<?php echo $key['parent']; ?>" placeholder="Masukkan parent content">
-            </div> 
-
-            <div class="form-group">
-              <label for="image">Gambar content . optional</label>
-              <input type="file" name="image" id="image" class="form-control">
-            </div> 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Update</button>
-          </form>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
   <!-- modal hapus -->
   <div class="modal fade" id="modal-delete-<?php echo $key['id']; ?>">
     <div class="modal-dialog">
@@ -176,3 +137,56 @@ $table = [
 </tbody>
 
 <?php $this->load->view('templates/table_simple_close'); ?>
+<?php $this->load->view('templates/footer'); ?>
+<?php foreach ($content as $key) : ?>
+<!-- modal edit -->
+<div class="modal fade" id="modal-edit-<?php echo $key['id']; ?>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit content</h4>
+      </div>
+      <div class="modal-body">
+        <form action="<?php echo base_url('content/update/'.$key['id']); ?>" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title">Judul content</label>
+            <input type="text" name="title" id="title" class="form-control" placeholder="Masukkan judul" value="<?php echo $key['title']; ?>" required>
+          </div> 
+
+          <div class="form-group">
+            <label for="text">Isi content</label>
+            <textarea name="text" id="text" class="form-control" placeholder="Masukkan isi content" required><?php echo $key['text']; ?></textarea>
+          </div> 
+
+          <div class="form-group">
+            <label for="parent">Parent content . optional</label>
+            <input type="text" name="parent" id="parent" class="form-control" value="<?php echo $key['parent']; ?>" placeholder="Masukkan parent content">
+          </div> 
+
+          <div class="form-group">
+            <label for="image">Media content</label>
+            <select class="form-control" id="media-edit-<?php echo $key['id']; ?>" required>
+              <option value="">-pilih-</option>
+              <option value="link">Link</option>
+              <option value="upload">Upload</option>
+            </select>
+            <div style="margin-top: 15px;" data-link="<?php echo $key['image']; ?>"></div>
+          </div> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<script>
+switchInputType('#media-edit-<?php echo $key['id']; ?>');
+</script>
+<?php endforeach; ?>

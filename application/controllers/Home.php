@@ -14,6 +14,7 @@
 		]);
 
 		$armada = $this->db->order_by('text', 'desc')->get_where('content', ['title' => 'armada-item'])->result_array();
+		$armada_4 = $this->db->order_by('text', 'desc')->get_where('content', ['title' => 'cluster-alinda-4'])->result_array();
 		$banner = $this->db->get_where('content', ['title' => 'banner'])->row_array();
 		$banner_description = $this->db->get_where('content', ['title' => 'banner-description'])->row_array();
 		$layanan = $this->db->get_where('content', ['title' => 'layanan'])->result_array();
@@ -29,9 +30,12 @@
 		$fasilitas = $this->db->get_where('content', ['title' => 'fasilitas'])->row_array();
 		$footer = $this->db->get_where('content', ['title' => 'footer'])->row_array();
 		$menu = $this->db->get_where('content', ['title' => 'menu'])->result_array();
+		$cluster_alinda_3 = $this->db->get_where('content', ['title' => 'cluster-alinda-3-title'])->row_array();
+		$cluster_alinda_4 = $this->db->get_where('content', ['title' => 'cluster-alinda-4-title'])->row_array();
 
 		$data = [
 			'armada' => $armada,
+			'armada_4' => $armada_4,
 			'banner' => $banner,
 			'banner_description' => $banner_description,
 			'layanan' => $layanan,
@@ -46,6 +50,8 @@
 			'promo' => $promo,
 			'fasilitas' => $fasilitas,
 			'footer' => $footer,
+			'cluster_alinda_3' => $cluster_alinda_3,
+			'cluster_alinda_4' => $cluster_alinda_4,
 		];
 
 		$this->load->view('home_templates/header', ['title' => $banner['text'], 'tentang' => $tentang, 'nomor_wa' => $nomor_wa, 'menu' => $menu]);

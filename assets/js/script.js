@@ -30,3 +30,36 @@ function previewImage() {
     });
   }
 }
+
+// select link or upload
+function switchInputType(changer) {
+  $(changer).on('change', function(e) {
+    let val = e.target.value;
+    let targetWrapper = $(this).next();
+    let dataValue = targetWrapper.data('link');
+    let link = `<label for="link">Link</label>
+                <input type="text" id="link" name="image" class="form-control" placeholder="Masukkan link" value="${typeof dataValue != 'undefined' ? dataValue : ''}">`;
+    let upload = `<label for="upload">Upload</label>
+                  <input type="file" id="upload" name="image" class="form-control" placeholder="Masukkan link">`;
+
+    if (val === 'link') {
+      targetWrapper.html(link);
+    } else {
+      targetWrapper.html(upload);
+    }
+  });
+}
+
+// initialize
+switchInputType('#media-create');
+
+// make preview image
+$('.image-preview-button').on('click', function() {
+  let wrapper = $(this).parents('.image-preview');
+  wrapper.addClass('image-preview-active');
+});
+
+$('.image-preview-close').on('click', function() {
+  let wrapper = $(this).parents('.image-preview');
+  wrapper.removeClass('image-preview-active');
+});

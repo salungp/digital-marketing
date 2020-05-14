@@ -27,7 +27,13 @@
       </div>
 
       <div class="col-md-6">
-        <img data-aos="zoom-in" data-aos-delay="500" src="<?php echo base_url($tentang['image']); ?>" class="img-thumbnail" alt="<?php echo $tentang['text']; ?>">
+      	<div class="image-preview">
+      		<button class="image-preview-close"><i class="fa fa-close"></i></button>
+      		<div class="image-overlay">
+      			<button class="image-preview-button"><i class="fa fa-eye"></i></button>
+      		</div>
+	        <img data-aos="zoom-in" data-aos-delay="500" src="<?php echo base_url($tentang['image']); ?>" class="img-thumbnail" alt="<?php echo $tentang['text']; ?>">
+      	</div>
       </div>
     </div>
   </div>
@@ -35,13 +41,19 @@
 
 <section class="section armada-kami" id="armada">
 	<div class="container">
-		<h3 class="section-title text-center border-center" data-aos="zoom-in">Cluster arlinda</h3>
+		<h3 class="section-title text-center border-center" data-aos="zoom-in"><?php echo $cluster_alinda_3['text']; ?></h3>
 
 		<div class="row">
 			<?php foreach($armada as $armadaItem) : ?>
 			<div class="col-md-4 mb-3">
-				<div class="card" data-aos="zoom-in">
-					<img src="<?php echo base_url($armadaItem['image']); ?>" style="height: 200px;object-fit: cover;" alt="product image" class="card-img-top">
+				<div class="card" style="position: static !important">
+					<div class="image-preview">
+		    		<button class="image-preview-close"><i class="fa fa-close"></i></button>
+		    		<div class="image-overlay">
+		    			<button class="image-preview-button"><i class="fa fa-eye"></i></button>
+		    		</div>
+		        <img class="card-image" style="height: 200px;object-fit: cover;width: 100%;" data-aos="zoom-in" data-aos-delay="500" src="<?php echo base_url($armadaItem['image']); ?>" class="img-thumbnail" alt="<?php echo $armadaItem['text']; ?>">
+		    	</div>
 					<div class="card-body">
 						<h5 class="card-title font-weight-bold"><?php echo $armadaItem['text']; ?></h5>
 						<a href="https://api.whatsapp.com/send?phone=<?php echo $nomor_wa['text']; ?>&text=Halo%20Gemah%20Transindo%20Saya%20mau%20tanya..." class="btn btn-sm btn-success"><i class="fa fa-comments"></i> Pesan sekarang</a>
@@ -53,7 +65,33 @@
 	</div>
 </section>
 
-<section class="section layanan" id="layanan">
+<section class="section armada-kami" id="armada">
+	<div class="container">
+		<h3 class="section-title text-center border-center" data-aos="zoom-in"><?php echo $cluster_alinda_4['text']; ?></h3>
+
+		<div class="row">
+			<?php foreach($armada_4 as $armadaItem) : ?>
+			<div class="col-md-4 mb-3">
+				<div class="card" style="position: static !important">
+					<div class="image-preview">
+		    		<button class="image-preview-close"><i class="fa fa-close"></i></button>
+		    		<div class="image-overlay">
+		    			<button class="image-preview-button"><i class="fa fa-eye"></i></button>
+		    		</div>
+		        <img class="card-image" style="height: 200px;object-fit: cover;width: 100%;" data-aos="zoom-in" data-aos-delay="500" src="<?php echo base_url($armadaItem['image']); ?>" class="img-thumbnail" alt="<?php echo $armadaItem['text']; ?>">
+		    	</div>
+					<div class="card-body">
+						<h5 class="card-title font-weight-bold"><?php echo $armadaItem['text']; ?></h5>
+						<a href="https://api.whatsapp.com/send?phone=<?php echo $nomor_wa['text']; ?>&text=Halo%20Gemah%20Transindo%20Saya%20mau%20tanya..." class="btn btn-sm btn-success"><i class="fa fa-comments"></i> Pesan sekarang</a>
+					</div>
+				</div>
+			</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+
+<section class="section layanan" id="show-unit">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6" data-aos="zoom-in">
@@ -76,7 +114,7 @@
 	</div>
 </section>
 
-<section class="section layanan" id="layanan">
+<section class="section layanan" id="fasilitas">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">

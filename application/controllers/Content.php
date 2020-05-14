@@ -23,7 +23,6 @@
     $this->load->view('templates/header', ['title' => $title_page]);
     $this->load->view('templates/breadcrumb', ['breadcrumb' => $breadcrumb]);
     $this->load->view('content/index', ['content' => $content]);
-    $this->load->view('templates/footer');
 	}
 
 	public function create()
@@ -32,7 +31,7 @@
 		$slug = strtolower(str_replace(' ', '-', $title));
 		$text = $this->input->post('text');
 		$parent = htmlspecialchars($this->input->post('parent'));
-		$image = '';
+		$image = $this->input->post('image');
 		$author = $this->session->userdata('login');
 
 		if ($_FILES['image']['name'] != '') {
@@ -71,7 +70,7 @@
 		$slug = strtolower(str_replace(' ', '-', $title));
 		$text = $this->input->post('text');
 		$parent = htmlspecialchars($this->input->post('parent'));
-		$image = $old['image'];
+		$image = $this->input->post('image');
 		$author = $this->session->userdata('login');
 
 		if ($_FILES['image']['name'] != '') {
